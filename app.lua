@@ -9,7 +9,7 @@ ANDROID_ARCHITECTURE = "arm64-v8a"
 ---@note Add all requires here, ALL of the files which you have created should be here
 function Requires()
           require "bundle"
-          require "src.main"
+          require "cpp.hftsim"
 end
 
 ---@note Add all the functions here, it will be compiled and called in order you put it, Add other functions
