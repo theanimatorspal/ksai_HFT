@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/sansk/Music/ksai_HFT/cpp/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DGLM_ENABLE_EXPERIMENTAL -DNOMINMAX -DTRACY_ENABLE -DVK_USE_PLATFORM_WIN32_KHR -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_WARNINGS -D_SDL_MAIN_HANDLED -Dhftsim_EXPORTS -IC:/Users/sansk/OneDrive/Pictures/jkrgui/application -IC:/Users/sansk/OneDrive/Pictures/jkrgui/jkrengine -IC:/Users/sansk/OneDrive/Pictures/jkrgui/ksaivulkan -IC:/Users/sansk/OneDrive/Pictures/jkrgui/ksaivulkan/Vulkan -IC:/Users/sansk/OneDrive/Pictures/jkrgui/ksaivulkan/Vendor -IC:/Users/sansk/OneDrive/Pictures/jkrgui/ksaivulkan/Vendor/stbi -IC:/Users/sansk/OneDrive/Pictures/jkrgui/ksaivulkan/Vendor/asio -IC:/Users/sansk/OneDrive/Pictures/jkrgui/libs -IC:/Users/sansk/OneDrive/Pictures/jkrgui/vendor/lua -IC:/Users/sansk/Music/ksai_HFT/cpp/ksaivulkan/Vendor/Tracy/tracy -IC:/VulkanSDK/1.4.304.0/Include -O0 -std=gnu++20 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -flto=thin -o CMakeFiles\\hftsim.dir\\hftsim.cpp.obj -c C:\\Users\\sansk\\Music\\ksai_HFT\\cpp\\hftsim.cpp",
+  "file": "C:\\Users\\sansk\\Music\\ksai_HFT\\cpp\\hftsim.cpp",
+  "output": "CMakeFiles\\hftsim.dir\\hftsim.cpp.obj"
+}
+]
