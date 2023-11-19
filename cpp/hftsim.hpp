@@ -151,7 +151,25 @@ struct trade {
 };
 
 struct trader {
+    portfolio m_porfolio;
+    sp<orderBook> m_orderBook;
+    v<sp<order>> m_activeOrders;
 
+    int m_id;
+    double m_available_cash;
+
+    ///@note random Devices
+    randev m_rand;
+    rangen m_rang; /// std::mt19937 generator
+
+    void make_order(order::type in_type,
+         sp<stock> in_stock,
+         int in_quantity,
+         order::preference in_pref,
+         mtx& in_trademtx) {}
+    void update_portfolio(sp<order> in_order, mtx& in_ordmtx) {}
+    void cancel_order(sp<order> in_order, mtx& in_trademtx) {}
+    void do_action(v<sp<stock>> in_stocks, mtx& in_trademtx) {}
 };
 
 struct market {
