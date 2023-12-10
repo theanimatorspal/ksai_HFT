@@ -6,12 +6,12 @@ include("C:/Users/sansk/OneDrive/Pictures/jkrgui/CMakeConfig.cmake")
 include("C:/Users/sansk/OneDrive/Pictures/jkrgui/CMakeCommon.cmake")
 include("C:/Users/sansk/OneDrive/Pictures/jkrgui/out/build/${CMAKE_PRESET_NAME}/luaExport.cmake")
 include("C:/Users/sansk/OneDrive/Pictures/jkrgui/out/build/${CMAKE_PRESET_NAME}/ksaivulkanExport.cmake")
-include("C:/Users/sansk/OneDrive/Pictures/jkrgui/out/build/${CMAKE_PRESET_NAME}/jkrguiExport.cmake")
+include("C:/Users/sansk/OneDrive/Pictures/jkrgui/out/build/${CMAKE_PRESET_NAME}/jkrengineExport.cmake")
 
 
 project(hftsim)
 add_library(hftsim SHARED hftsim.cpp hftsim.hpp)
-target_link_libraries(hftsim lua)
+target_link_libraries(hftsim lua jkrengine)
 configure_target(hftsim)
 
 add_custom_command(
@@ -20,4 +20,3 @@ add_custom_command(
             $<TARGET_FILE:hftsim>
             ${CMAKE_CURRENT_SOURCE_DIR}/../
 )
-

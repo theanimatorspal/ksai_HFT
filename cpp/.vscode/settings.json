@@ -21,14 +21,16 @@
     "cmake.loadCompileCommands": false,
     "cmake.debugConfig": {
         "console": "externalTerminal",
-        "cwd": "C:\\Users\\sansk\\OneDrive\\Desktop\\Present",
+        // "cwd": "C:\\Users\\sansk\\OneDrive\\Desktop\\JkrGame\\ufri",
+        "cwd": "C:\\Users\\sansk\\OneDrive\\Desktop\\PresentTest-For-JkrGUI",
         "visualizerFile": "${workspaceFolder}/Visualizers/glm.natvis",
         "args": [
             "--gr",
             "--run",
             // "asst",
+            // "Experiment/app"
+            // "test",
             "app"
-            // "jkrguipr"
             // "--android-environment",
             // "--appname \"tester\"",
             // "--dirname \"android\"",
@@ -49,32 +51,32 @@
                 "scope": "keyword",
                 "settings": {
                     "fontStyle": "underline",
-                    "foreground": "#8850ff"
+                    // "foreground": "#8850ff"
                 }
             },
             {
                 "scope": "'variable.parameter",
                 "settings": {
-                    "foreground": "#00aa09"
+                    // "foreground": "#00aa09"
                 }
             },
             {
                 "scope": "variable.language",
                 "settings": {
-                    "foreground": "#0f09ff"
+                    // "foreground": "#0f09ff"
                 }
             },
             {
                 "scope": "string",
                 "settings": {
-                    "foreground": "#aa08f0"
+                    // "foreground": "#aa08f0"
                 }
             },
             {
                 "scope": "entity.name.function",
                 "settings": {
                     "fontStyle": "bold",
-                    "foreground": "#0f89ff"
+                    // "foreground": "#0f89ff"
                 }
             },
             {
@@ -84,7 +86,7 @@
                     "comment.block.documentation"
                 ],
                 "settings": {
-                    "foreground": "#FF0000",
+                    // "foreground": "#FF0000",
                     "fontStyle": "bold"
                 }
             }
@@ -129,7 +131,7 @@
     "workbench.editor.showTabs": "none",
     "explorer.confirmDelete": false,
     "cmake.showOptionsMovedNotification": false,
-    "C_Cpp.intelliSenseEngine": "disabled",
+    "C_Cpp.intelliSenseEngine": "default",
     "cmake.showConfigureWithDebuggerNotification": false,
     "breadcrumbs.enabled": true,
     "workbench.activityBar.location": "bottom",
@@ -144,5 +146,102 @@
         "StateId"
     ],
     "vim.enableNeovim": true,
-    "cmake.sourceDirectory": "C:/Users/sansk/Music/ksai_HFT/cpp"
+    "codetogether.virtualCursorJoin": "ownVirtualCursor",
+    "files.associations": {
+        "thread": "cpp",
+        "algorithm": "cpp",
+        "cmath": "cpp",
+        "any": "cpp",
+        "array": "cpp",
+        "atomic": "cpp",
+        "bit": "cpp",
+        "bitset": "cpp",
+        "cctype": "cpp",
+        "charconv": "cpp",
+        "chrono": "cpp",
+        "cinttypes": "cpp",
+        "clocale": "cpp",
+        "codecvt": "cpp",
+        "compare": "cpp",
+        "complex": "cpp",
+        "concepts": "cpp",
+        "condition_variable": "cpp",
+        "coroutine": "cpp",
+        "csignal": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "ctime": "cpp",
+        "cwchar": "cpp",
+        "deque": "cpp",
+        "exception": "cpp",
+        "expected": "cpp",
+        "resumable": "cpp",
+        "filesystem": "cpp",
+        "format": "cpp",
+        "forward_list": "cpp",
+        "fstream": "cpp",
+        "functional": "cpp",
+        "future": "cpp",
+        "initializer_list": "cpp",
+        "iomanip": "cpp",
+        "ios": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "iterator": "cpp",
+        "limits": "cpp",
+        "list": "cpp",
+        "locale": "cpp",
+        "map": "cpp",
+        "memory": "cpp",
+        "mutex": "cpp",
+        "new": "cpp",
+        "numeric": "cpp",
+        "optional": "cpp",
+        "ostream": "cpp",
+        "queue": "cpp",
+        "random": "cpp",
+        "ranges": "cpp",
+        "ratio": "cpp",
+        "regex": "cpp",
+        "set": "cpp",
+        "shared_mutex": "cpp",
+        "source_location": "cpp",
+        "span": "cpp",
+        "sstream": "cpp",
+        "stack": "cpp",
+        "stdexcept": "cpp",
+        "stop_token": "cpp",
+        "streambuf": "cpp",
+        "string": "cpp",
+        "system_error": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "utility": "cpp",
+        "valarray": "cpp",
+        "variant": "cpp",
+        "vector": "cpp",
+        "xfacet": "cpp",
+        "xhash": "cpp",
+        "xiosbase": "cpp",
+        "xlocale": "cpp",
+        "xlocbuf": "cpp",
+        "xlocinfo": "cpp",
+        "xlocmes": "cpp",
+        "xlocmon": "cpp",
+        "xlocnum": "cpp",
+        "xloctime": "cpp",
+        "xmemory": "cpp",
+        "xstring": "cpp",
+        "xtr1common": "cpp",
+        "xtree": "cpp",
+        "xutility": "cpp"
+    },
 }
