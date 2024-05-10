@@ -1,0 +1,2 @@
+require "hftsim"
+print("HELLO")

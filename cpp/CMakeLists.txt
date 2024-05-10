@@ -11,7 +11,7 @@ include("C:/Users/sansk/OneDrive/Pictures/jkrgui/out/build/${CMAKE_PRESET_NAME}/
 
 project(hftsim)
 add_library(hftsim SHARED hftsim.cpp hftsim.hpp)
-target_link_libraries(hftsim lua jkrengine)
+target_link_libraries(hftsim lua ksaivulkan jkrengine)
 configure_target(hftsim)
 
 add_custom_command(

@@ -1,4 +1,4 @@
-#include "hftsim.hpp"
+// #include "hftsim.hpp"
 #include <sol/sol.hpp>
 
 #ifdef _WIN32
@@ -8,8 +8,9 @@
 #endif
 
 extern "C" DLLEXPORT int luaopen_hftsim(lua_State *L) {
-  sol::state_view s(L);
-  auto jkrguiApp = s["jkrguiApp"].get_or_create<sol::table>();
-  jkrguiApp.set_function("hello", []() { printf("Hello from JkrGUI\n"); });
+  // sol::state_view s(L);
+  // std::cout << "HELLO EVYERHING\n";
+  // auto hft = s["hft"].get_or_create<sol::table>();
+  // hft.set_function("hello", []() { printf("Hello from hftsim\n"); });
   return 1;
 }
