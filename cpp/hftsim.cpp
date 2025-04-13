@@ -1,4 +1,4 @@
-// #include "hftsim.hpp"
+#include "hftsim.hpp"
 #include <sol/sol.hpp>
 
 #ifdef _WIN32
