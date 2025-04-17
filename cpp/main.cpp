@@ -7,9 +7,10 @@
 #define DLLEXPORT
 #endif
 
-void bind_hft(sol::state_view lua) {
+void bind_hft(sol::state_view inlua) {
   using namespace hft;
-  lua.new_enum<false>(
+  sol::table hft = inlua.create_named_table("hft");
+  hft.new_enum<false>(
       "event", "change_in_interest_rate", hft::event::change_in_interest_rate,
       "inflation_rise", hft::event::inflation_rise, "inflation_fall",
       hft::event::inflation_fall, "deflation", hft::event::deflation,
@@ -60,26 +61,79 @@ void bind_hft(sol::state_view lua) {
 
       "nothing", hft::event::nothing);
 
-  lua.new_enum<false>("order_type", "buy", hft::order::type::buy, "sell",
+  hft.new_enum<false>("order_type", "buy", hft::order::type::buy, "sell",
                       hft::order::type::sell);
 
-  lua.new_enum<false>("order_status", "open", hft::order::status::open,
+  hft.new_enum<false>("order_status", "open", hft::order::status::open,
                       "partial", hft::order::status::partial, "closed",
                       hft::order::status::closed, "cancelled",
                       hft::order::status::cancelled);
 
-  lua.new_enum<false>("order_preference", "limit",
+  hft.new_enum<false>("order_preference", "limit",
                       hft::order::preference::limit, "market",
                       hft::order::preference::market);
 
-  lua.new_usertype<stock>(
+  hft.new_usertype<stock>(
       "stock", sol::call_constructor,
       sol::factories([](s in_name, double in_price) -> std::shared_ptr<stock> {
-        return std::make_shared<stock>(in_name, in_price);
+        return mksh<stock>(in_name, in_price);
       }),
       "get_price", &stock::get_price, "fluctuate", &stock::fluctuate,
       "edit_price", &stock::edit_price, "economic_indicators",
       &stock::economic_indicators);
+
+  hft.new_usertype<order>(
+      "order", sol::call_constructor,
+      sol::factories([](order::type in_type, sp<stock> in_stock,
+                        int in_quantity, int in_id, order::preference in_pref) {
+        return mksh<order>(in_type, in_stock, in_quantity, in_id, in_pref);
+      }),
+      "m_price", &order::m_price, "m_id", &order::m_id, "m_quantity",
+      &order::m_quantity, "m_type", &order::m_type, "m_stock", &order::m_stock,
+      "m_status", &order::m_status, "m_pref", &order::m_pref);
+
+  hft.new_usertype<trade>("trade", sol::call_constructor,
+                          sol::factories([](sp<order> buy, sp<order> sell) {
+                            return std::make_shared<trade>(buy, sell);
+                          }),
+                          "m_buy_order", &trade::m_buy_order, "m_sell_order",
+                          &trade::m_sell_order, "m_quantity",
+                          &trade::m_quantity);
+
+  hft.new_usertype<orderBook>(
+      "orderBook", sol::call_constructor,
+      sol::factories([]() { return std::make_shared<orderBook>(); }),
+      "add_order", &orderBook::add_order, "execute_trades",
+      &orderBook::execute_trades, "cancel_order", &orderBook::cancel_order,
+      "clear", &orderBook::clear);
+
+  hft.new_usertype<portfolio>(
+      "portfolio", sol::call_constructor,
+      sol::factories([]() { return std::make_shared<portfolio>(); }),
+      "make_change", &portfolio::make_change, "cancel_sell",
+      &portfolio::cancel_sell, "register_stock_bought",
+      &portfolio::register_stock_bought, "register_stock_sold",
+      &portfolio::register_stock_sold, "list_stocks", &portfolio::list_stocks);
+
+  hft.new_usertype<trader>(
+      "trader", sol::call_constructor,
+      sol::factories([](int id, double cash, sp<orderBook> ob) {
+        return std::make_shared<trader>(id, cash, ob);
+      }),
+      "make_order", &trader::make_order, "update_portfolio",
+      &trader::update_portfolio, "cancel_order", &trader::cancel_order,
+      "do_random_action", &trader::do_random_action, "m_available_cash",
+      &trader::m_available_cash, "m_id", &trader::m_id);
+
+  hft.new_usertype<market>(
+      "market", sol::call_constructor,
+      sol::factories([]() { return std::make_shared<market>(); }), "add_trader",
+      &market::add_trader, "add_stock", &market::add_stock, "run", &market::run,
+      "reset", &market::reset, "stop", &market::stop, "pause", &market::pause,
+      "resume", &market::resume, "fluctuate", &market::fluctuate,
+      "generate_random_market_event", &market::generate_random_market_event,
+      "execute_order_book", &market::execute_order_book, "apply_market_impact",
+      &market::apply_market_impact);
 }
 
 extern "C" DLLEXPORT int luaopen_hftsim(lua_State *L) {

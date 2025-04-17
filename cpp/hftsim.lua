@@ -2,6 +2,9 @@ require "bundle"
 function main()
           require "hftsim"
 
+          local market = hft.market()
+          Engine.log(market)
+
           local glerp, glerp_2f,
           glerp_3f, glerp_4f,
           glerp_mat4f  = Jmath.GetLerps()
