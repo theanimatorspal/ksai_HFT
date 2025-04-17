@@ -10,7 +10,7 @@ include("C:/Users/sansk/OneDrive/Pictures/jkrgui/out/build/${CMAKE_PRESET_NAME}/
 
 
 project(hftsim)
-add_library(hftsim SHARED hftsim.cpp hftsim.hpp)
+add_library(hftsim SHARED hftsim.cpp hftsim.hpp main.cpp)
 target_link_libraries(hftsim lua ksaivulkan jkrengine)
 configure_target(hftsim)
 
