@@ -141,7 +141,8 @@
         "indent_size": "10"
     },
     "Lua.diagnostics.globals": [
-        "StateId"
+        "StateId",
+        "hft"
     ],
     "vim.enableNeovim": true,
     "cmake.sourceDirectory": "C:/Users/sansk/Music/ksai_HFT/cpp"
