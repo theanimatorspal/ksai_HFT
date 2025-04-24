@@ -29,6 +29,7 @@ function main()
             market:add_trader(math.floor(tonumber(el[1])), tonumber(el[2]))
         end, 2)
 
+
     --- UI
     do
         local c      = {
@@ -90,15 +91,33 @@ function main()
                                     E,
                                     E,
                                     E,
+                                    E,
                                     H(
                                         {
                                             E,
-                                            E,
-                                            E,
-                                            B { t = "run" },
-                                        }, CR(4)
+                                            B {
+                                                t = "run",
+                                                onclick = function()
+                                                    local bb = app.els["run_stop_button"]
+                                                    if type(app.market_running) == "nil" then
+                                                        market:run()
+                                                        app.market_running = true
+                                                        bb:Update(bb.mP, bb.mD, app.nf, "pause")
+                                                    elseif app.market_running == true then
+                                                        market:pause()
+                                                        bb:Update(bb.mP, bb.mD, app.nf, "resume")
+                                                        app.market_running = false
+                                                    elseif app.market_running == false then
+                                                        market:resume()
+                                                        bb:Update(bb.mP, bb.mD, app.nf, "pause")
+                                                        app.market_running = true
+                                                    end
+                                                end,
+                                                en = "run_stop_button",
+                                            },
+                                        }, CR { "pan", 0.1 }
                                     ),
-                                }, CR(5))
+                                }, CR(6))
                         },
                         --============================
                     },
@@ -110,26 +129,61 @@ function main()
                 --============================
                 S {
                     ui_data_window,
-                    ui_table_padding,
+                    V(
+                        {
+                            ui_table_padding,
+                            E,
+                            H(
+                                {
+                                    B { t = "Interest Rate:" },
+                                    B { t = "Interest Rate: ", en = "market_interest_logger" },
+                                }, CR(2)),
+                            B { t = "This is a logger", en = "market_logger" },
+                        }, CR { 0.7, "pan", 0.05, 0.05 })
                 }
                 --============================
             }, { 0.7, 0.001, 0.3 })
 
+
+        --== POST UI STUFF
         ui_layout:Update(vec3(0, 0, app.bd), vec3(app.fd.x, app.fd.y, 1))
         ui_graph.Config({ from = vec3(0), to = vec3(20) }).Scale().Points {}
 
-        app.Update   = function()
-            app.wr:Update()
-        end
+        local market_logger_elemn = app.els["market_logger"]
+        local market_interest_logger_elemn = app.els["market_interest_logger"]
+        app.wr.c:Push(Jkr.CreateUpdatable(
+            function()
+                market_logger_elemn:Update(market_logger_elemn.mP,
+                    market_logger_elemn.mD,
+                    app.nf,
+                    hft.GetLogString(),
+                    nil, hft.GetLogColor())
+                market_interest_logger_elemn:Update(market_interest_logger_elemn.mP,
+                    market_interest_logger_elemn.mD,
+                    app.nf,
+                    "" .. market:get_interest_rate(),
+                    nil, hft.GetLogColor())
+                local data = {
+                    { "%d", "%s", "%.2f" }
+                }
+                ui_table:Update(ui_table.mP, ui_table.mD, data)
+            end
+        ))
 
-        app.Dispatch = function()
-            app.wr:Dispatch()
-        end
+        do
+            app.Update   = function()
+                app.wr:Update()
+            end
 
-        app.Draw     = function()
-            app.wr:Draw()
-        end
+            app.Dispatch = function()
+                app.wr:Dispatch()
+            end
 
-        app.loop()
+            app.Draw     = function()
+                app.wr:Draw()
+            end
+
+            app.loop()
+        end
     end
 end
