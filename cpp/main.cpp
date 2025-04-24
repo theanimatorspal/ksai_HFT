@@ -143,6 +143,8 @@ void bind_hft(sol::state_view inlua) {
            }),
            "get_price",
            &stock::get_price,
+           "get_name",
+           &stock::get_name,
            "fluctuate",
            &stock::fluctuate,
            "edit_price",

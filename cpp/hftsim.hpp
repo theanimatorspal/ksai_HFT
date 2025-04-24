@@ -75,6 +75,7 @@ struct stock {
 
       stock(s in_name, double in_price);
       double get_price() const;
+      GETTER get_name() const { return m_name; };
       void fluctuate(span<double> in_fluctuations);
       void edit_price(double in_amount);
       void economic_indicators(double in_factor, double in_impact);

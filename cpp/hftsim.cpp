@@ -641,7 +641,6 @@ void hft::market::apply_market_impact(event in_event, mtx &in_event_mtx) {
                   break;
 
             case event::nothing:
-                  std::cout << "Nothing significant happened." << std::endl;
                   break;
       }
 }

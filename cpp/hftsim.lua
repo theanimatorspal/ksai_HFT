@@ -67,7 +67,7 @@ function main()
                         t = text,
                         en = row .. "__" .. column .. "ui_table",
                     }
-            end
+            end, 10
         )
         local ui_table_padding = app.Pad(ui_table, 0.1, 0.1)
         local ui_layout = H(
@@ -149,6 +149,7 @@ function main()
         ui_layout:Update(vec3(0, 0, app.bd), vec3(app.fd.x, app.fd.y, 1))
         ui_graph.Config({ from = vec3(0), to = vec3(20) }).Scale().Points {}
 
+
         local market_logger_elemn = app.els["market_logger"]
         local market_interest_logger_elemn = app.els["market_interest_logger"]
         app.wr.c:Push(Jkr.CreateUpdatable(
@@ -163,12 +164,18 @@ function main()
                     app.nf,
                     "" .. market:get_interest_rate(),
                     nil, hft.GetLogColor())
+
                 local data = {
-                    { "%d", "%s", "%.2f" }
+                    { "%d", "%s", "%.2f" },
                 }
-                ui_table:Update(ui_table.mP, ui_table.mD, data)
+                local stocks = market:get_stocks()
+                for i = 1, #stocks do
+                    data[#data + 1] = { i, stocks[i]:get_name(), stocks[i]:get_price() }
+                end
+                ui_table:Update(ui_table.mP, ui_table.mD, data, 0)
             end
         ))
+
 
         do
             app.Update   = function()
