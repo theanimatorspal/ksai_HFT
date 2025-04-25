@@ -1,6 +1,6 @@
 <h1 align="center">⚡ ksai_HFT</h1>
-<p align="center"><i>A Hyper-Fictional Hyper-Fast Trading Simulator for C++ & Lua Addicts</i></p>
-<p align="center"><b>Platform Support:</b> Windows ✅ | macOS ✅ | Linux ✅</p>
+<p align="center"><i>A Hyper-Fictional Trading Simulator for C++ & Lua Addicts</i></p>
+<p align="center"><b> Visualized using JkrGUI library </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/build-chaotic-orange?style=flat-square&logo=github" />
@@ -37,7 +37,11 @@ You get:
 
 ## 🛠️ Building ksai_HFT from Source
 
-### Step 1: Clone the Chaos
+### Step 1: Install JkrGUI
+
+ksai_HFT visualization is done using JkrGUI, you have to install it. Goto https://github.com/theanimatorspal/jkrgui. You have to properly setup JkrGUI.
+
+### Step 2: Clone the Chaos
 
 ```bash
 git clone https://github.com/yourusername/ksai_HFT.git
@@ -46,7 +50,7 @@ cd ksai_HFT
 
 ---
 
-### Step 2: Let CMake Do the Thinking
+### Step 3: Let CMake Do the Thinking
 
 #### 🪟 Windows (Visual Studio)
 
@@ -55,7 +59,7 @@ cmake -B out/build/VS -G "Visual Studio 17 2022" -DCMAKE_BUILD_TYPE=Release
 cmake --build out/build/VS --config Release
 ```
 
-#### 🐧 macOS / Linux (Ninja)
+#### 🐧 macOS (Ninja)
 
 ```bash
 cmake -B out/build/Ninja -G Ninja -DCMAKE_BUILD_TYPE=Release
