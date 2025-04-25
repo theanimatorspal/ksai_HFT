@@ -6,7 +6,6 @@
   <img src="https://img.shields.io/badge/build-chaotic-orange?style=flat-square&logo=github" />
   <img src="https://img.shields.io/badge/events-massive-blue?style=flat-square&logo=eventbrite" />
   <img src="https://img.shields.io/badge/latency-microseconds-critical?style=flat-square&logo=stopwatch" />
-  <img src="https://img.shields.io/badge/AI-dumb%20but%20fast-green?style=flat-square&logo=openai" />
   <img src="https://img.shields.io/badge/market%20crashes-intentional-red?style=flat-square&logo=acm" />
   <img src="https://img.shields.io/badge/api-lua%20interop%20%26%20abuse-yellowgreen?style=flat-square&logo=lua" />
 </p>
